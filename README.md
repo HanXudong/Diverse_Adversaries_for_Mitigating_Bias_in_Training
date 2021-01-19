@@ -39,7 +39,7 @@ To get the dataset, please follow the instruction from https://github.com/shauli
 - Adversarial Ensemble: `nb_adv_ensemble.ipynb`
 - Adversarial Diverse: `nb_adv_diverse.ipynb`
 
-Notice that in our paper, `Table 1` results are averaged over 10 runs. Above notebooks are just one run not averaged scores.
+Notice that in our paper, `Table 1` results are averaged over 10 runs. Above notebooks are just one run rather than averaged scores.
 ## Experiments
 `$data_path` the the folder of splits.
 
@@ -63,6 +63,7 @@ python script_deepmoji.py \
 python script_deepmoji.py \
         --data_path $data_path \
         --adv \
+        --LAMBDA 0.8 \
         --n_discriminator $N
 ```
 
@@ -71,6 +72,7 @@ python script_deepmoji.py \
 python script_deepmoji.py \
     --data_path $data_path \
     --adv \
+    --LAMBDA 0.8 \
     --n_discriminator $N \
     --DL \
     --diff_LAMBDA 10000
