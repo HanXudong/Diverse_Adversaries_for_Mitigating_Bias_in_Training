@@ -170,16 +170,16 @@ def train_epoch(model, discriminators, iterator, optimizer, criterion, device, a
         # main tasks loss
         loss = criterion(predictions, tags)
 
+        if args.adv:
+            # discriminator predictions
+            p_tags = p_tags.long()
 
-        # discriminator predictions
-        p_tags = p_tags.long()
+            hs = model.hidden(text)
 
-        hs = model.hidden(text)
-
-        for discriminator in discriminators:
-            adv_predictions = discriminator(hs)
-        
-            loss = loss + (criterion(adv_predictions, p_tags) / len(discriminators))
+            for discriminator in discriminators:
+                adv_predictions = discriminator(hs)
+            
+                loss = loss + (criterion(adv_predictions, p_tags) / len(discriminators))
                         
         loss.backward()
 
@@ -187,50 +187,6 @@ def train_epoch(model, discriminators, iterator, optimizer, criterion, device, a
         epoch_loss += loss.item()
         
     return epoch_loss / len(iterator)
-
-# Return main loss together with LAMBDA * adv loss
-# Used for early stopping
-def eval_epoch_advLoss(model, discriminator, iterator, criterion, device, args):
-    
-    epoch_loss = 0
-    epoch_acc = 0
-    
-    model.train()
-    discriminator.train()
-
-    # activate gradient reversal layer
-    discriminator.GR = True
-    
-    for batch in iterator:
-        
-        text = batch[0]
-        tags = batch[1].long()
-        # tags = batch[2].long() # Reverse
-        p_tags = batch[2].float()
-        # p_tags = batch[1]
-
-        text = text.to(device)
-        tags = tags.to(device)
-        p_tags = p_tags.to(device)
-        
-
-        predictions = model(text)
-        # main tasks loss
-        loss = criterion(predictions, tags)
-
-
-        # discriminator predictions
-        p_tags = p_tags.long()
-
-        hs = model.hidden(text)
-        adv_predictions = discriminator(hs)
-        
-        loss = loss + args.LAMBDA * criterion(adv_predictions, p_tags)
-        
-        epoch_loss += loss.item()
-        
-    return epoch_loss / len(iterator)
-
 
 # to evaluate the main model
 def eval_main(model, iterator, criterion, device, args):
