@@ -30,7 +30,7 @@ To get the dataset, please follow the instruction from https://github.com/shauli
             --input_dir $INPUT_DIR \
             --output_dir $OUTPUT_DIR
    ```
-    Find the `deepmoji_split.py` file from [the INLP repo](https://github.com/shauli-ravfogel/nullspace_project.ion/blob/master/src/data/deepmoji_split.py).
+    Find the `deepmoji_split.py` file from [the INLP repo](https://github.com/shauli-ravfogel/nullspace_projection/blob/master/src/data/deepmoji_split.py).
 
 ## Notebooks
 - Standard Model: `nb_deepmoji.ipynb`
