@@ -2,23 +2,6 @@
 import torch
 from torch import nn as nn
 
-
-class RobertaClassificationHead(nn.Module):
-    def __init__(self, config):
-        super().__init__()
-        self.dense = nn.Linear(config.hidden_size, config.hidden_size)
-        self.dropout = nn.Dropout(config.hidden_dropout_prob)
-        self.out_proj = nn.Linear(config.hidden_size, config.num_labels)
-
-    def forward(self, features, **kwargs):
-        x = self.dropout(x)
-        x = self.dense(x)
-        x = torch.tanh(x)
-        x = self.dropout(x)
-        x = self.out_proj(x)
-        return x
-
-
 class Discriminator(nn.Module):
     def __init__(self, args, input_size, num_classes):
         super(Discriminator, self).__init__()
