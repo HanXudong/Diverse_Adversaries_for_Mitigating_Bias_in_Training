@@ -1,5 +1,5 @@
 # Diverse_Adversaries_for_Mitigating_Bias_in_Training
-Source codes for EACL 2020 paper "Diverse Adversaries for Mitigating Bias in Training"
+Source codes for EACL 2021 paper "Diverse Adversaries for Mitigating Bias in Training"
 
 Han, Xudong, Timothy Baldwin and Trevor Cohn (to appear) Diverse Adversaries for Mitigating Bias in Training, In Proceedings of the 16th Conference of the European Chapter of the Association for Computational Linguistics (EACL 2021), virtual.
 
