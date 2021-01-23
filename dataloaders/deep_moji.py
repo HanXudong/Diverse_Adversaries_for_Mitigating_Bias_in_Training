@@ -32,9 +32,6 @@ class DeepMojiDataset(torch.utils.data.Dataset):
 
         print("Done, loaded data shapes: {}, {}, {}".format(self.X.shape, self.y.shape, self.private_label.shape))
 
-
-
-
     def __len__(self):
         'Denotes the total number of samples'
         return len(self.y)
@@ -44,6 +41,9 @@ class DeepMojiDataset(torch.utils.data.Dataset):
         return self.X[index], self.y[index], self.private_label[index]
     
     def load_data(self):
+        """
+        Based on https://github.com/shauli-ravfogel/nullspace_projection/blob/2403d09a5d84b3ae65129b239331a22f89ad69fc/src/deepmoji/deepmoji_debias.py#L24
+        """
         # ratios for pos / neg
         n_1 = int(self.n * self.ratio / 2)
         n_2 = int(self.n * (1 - self.ratio) / 2)
