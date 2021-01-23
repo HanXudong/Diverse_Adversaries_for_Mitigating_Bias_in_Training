@@ -37,7 +37,7 @@ To get the dataset, please follow the instruction from https://github.com/shauli
 - INLP Debiasing: `nb_INLP.ipynb`
 - Adversarial Debiasing: `nb_adv.ipynb`
 - Adversarial Ensemble: `nb_adv_ensemble.ipynb`
-- Adversarial Diverse: `nb_adv_diverse.ipynb`
+- Adversarial Diverse: `nb_differentiated_adv.ipynb`
 
 Notice that in our paper, `Table 1` results are averaged over 10 runs. Above notebooks are just one run rather than averaged scores.
 ## Experiments
